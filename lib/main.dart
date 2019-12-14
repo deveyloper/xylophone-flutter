@@ -9,76 +9,36 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$noteNumber.wav');
   }
 
+  Widget createKey(Color color, int noteNumber) {
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playNote(noteNumber);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
-          child: Column(children: [
-            Expanded(
-              child: FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  playNote(1);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.green,
-                onPressed: () {
-                  playNote(2);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.blue,
-                onPressed: () {
-                  playNote(3);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.orange,
-                onPressed: () {
-                  playNote(4);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.yellow,
-                onPressed: () {
-                  playNote(5);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.grey,
-                onPressed: () {
-                  playNote(6);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.indigo,
-                onPressed: () {
-                  playNote(1);
-                },
-                child: Text("Click me"),
-              ),
-            ),
-          ]),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              createKey(Colors.red, 1),
+              createKey(Colors.green, 1),
+              createKey(Colors.blue, 1),
+              createKey(Colors.orange, 1),
+              createKey(Colors.blueGrey, 1),
+              createKey(Colors.white70, 1),
+              createKey(Colors.indigo, 1),
+            ],
+          ),
         ),
       ),
     );
